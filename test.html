@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .editor {
+            border: solid 1px #ccc;
+            padding: 20px;
+            min-height: 100px;
+            margin-top: 5px;
+            width: 50%;
+        }
+
+        .earth {
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                width: 400px;
+                height: 380px;
+                background-image: url(https://img.freepik.com/free-photo/3d-rendering-planet-earth-map-with-continents-oceans_232104-533.jpg?size=626&ext=jpg);
+                border-radius: 50%;
+                background-size: cover;
+                background-position: center;
+                box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px #000 inset;
+                margin-top: 50px;
+                margin-bottom: 200px;
+                -webkit-animation:spin 4s linear infinite;
+                -moz-animation:spin 4s linear infinite;
+                animation:spin 4s linear infinite;
+            }
+
+            @-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="sample-toolbar">
+        <button type="button" onclick="f3()"><i class="fas fa-align-left"></i></button>
+        <button type="button" onclick="f4()"><i class="fas fa-align-center"></i></button>
+        <button type="button" onclick="f5()"><i class="fas fa-align-right"></i></button>
+        <button type="button" onclick="f6()">ABC</button>
+        <button type="button" onclick="f7()">abc</button>
+        <button type="button" onclick="f8()">Abc</button>
+        <button type="button" onclick="format('bold')"><span class="fa fa-bold fa-fw"></span></button>
+        <button type="button" onclick="format('italic')"><span class="fa fa-italic fa-fw"></span></button>
+        <button type="button" onclick="format('insertunorderedlist')"><span class="fa fa-list fa-fw"></span></button>
+    </div>
+
+    <div class="editor" id="sampleeditor">
+    </div>
+
+
+    <div class="margin">
+        <div class="earth"></div>
+    </div>
+
+
+
+
+    <script>
+        var edit = document.getElementById("sampleeditor");
+
+        function f3() {
+            edit.style.textAlign = "left";
+        }
+        function f4() {
+            edit.style.textAlign = "center";
+        }
+        function f5() {
+            edit.style.textAlign = "right";
+        }
+        function f6() {
+            edit.style.textTransform = "uppercase";
+        }
+        function f7() {
+            edit.style.textTransform = "lowercase";
+        }
+        function f8() {
+            edit.style.textTransform = "capitalize";
+        }
+
+        addEventListener('load', function () {
+            edit.setAttribute('contenteditable', 'true');
+        });
+        function format(command, value) {
+            document.execCommand(command, false, value);
+        }
+    </script>
+
+</body>
+
+</html>
